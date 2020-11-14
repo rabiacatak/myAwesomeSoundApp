@@ -1,11 +1,12 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import FirstSoundPage from "./pages/FirstSoundPage/FirstSoundPage";
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
+      <FirstSoundPage/>
       <StatusBar style="auto" />
     </View>
   );
@@ -14,8 +15,10 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
+    flexDirection: 'row',
     justifyContent: 'center',
+    backgroundColor: '#C5E2F6',
+    borderWidth: 1,
+    marginTop: 66,
   },
 });
