@@ -1,60 +1,61 @@
 import React from 'react';
 import { SafeAreaView, View, FlatList, StyleSheet, Text, StatusBar } from 'react-native';
+import { Image } from 'react-native';
+
 
 const DATA = [
     {
         id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
         title: 'First Item',
+        image: 'https://reactnative.dev/img/tiny_logo.png',
     },
     {
         id: '3ac68afc-c605-48d3-a4f8-fbd91aa97f63',
         title: 'Second Item',
+        image: 'https://reactnative.dev/img/tiny_logo.png',
     },
     {
         id: '58694a0f-3da1-471f-bd96-145571e29d72',
         title: 'Third Item',
+        image: require('./../../assets/rain.png'),
     },
 ];
 
-const Item = ({ title }) => (
-    <View style={{ width: "33%", height: 50 }}>
-        <Text style={{ width: "80%", height: 50 }}>{title}</Text>
-        <Text style={{ width: "20%", height: 50 }}></Text>
-    </View>
+const renderItem = ({ item }) => (
+    console.log('item', item),
+        <View style={{ height: 100, width: 100, backgroundColor: 'red' }}>
+            <Image source={item.image} style={{ height: 50, width: 50 }}/>
+            <Text />
+        </View>
 );
 
 const App = () => {
-    const renderItem = ({ item }) => (
-        <Item title={item.title} style={{ width: 50, height: 50 }}/>
-    );
-
     return (
-
-        <View>
-            <View style={styles.viewStyle}>
-                <Text>
-                    Some text
-                </Text>
-            </View>
-            <View style={styles.container}>
-            <View style={styles.element}><Text>Egemen - 1</Text></View>
-            <View style={styles.element}><Text>Egemen - 2</Text></View>
-            <View style={styles.element}><Text>Egemen - 3</Text></View>
+        <View style={styles.wholeStyle}>
+            <FlatList
+                numColumns={3}
+                data={DATA}
+                renderItem={renderItem}
+                keyExtractor={item => item.id}
+                style={{ flex: 1 }}
+            />
         </View>
-            </View>
-        // <SafeAreaView style={styles.container}>
-        //     <FlatList
-        //         numColumns={3}
-        //         data={DATA}
-        //         renderItem={renderItem}
-        //         keyExtractor={item => item.id}
-        //     />
-        // </SafeAreaView>
     );
 }
 
 const styles = StyleSheet.create({
+    wholeStyle: {
+        flex: 1,
+        backgroundColor: 'pink',
+    },
+    headerStyle: {
+        fontFamily:'Roboto',
+        fontSize:'30px',
+        color:'#02A4ED',
+        fontWeight: 'bold'
+    },
     viewStyle: {
+        paddingTop:'5%',
         flex: 1,
         justifyContent: 'center',
         alignItems:'center'
@@ -64,13 +65,10 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-around',
        // borderWidth: 1,
-        marginTop: 44,
     },
     element: {
-        margin: 5,
        // borderWidth: 1,
         padding: 10,
-        height: 50,
     },
     // container: {
     //     flex: 1,

@@ -6,6 +6,7 @@ import FirstSoundPage from "./pages/FirstSoundPage/FirstSoundPage";
 export default function App() {
   return (
     <View style={styles.container}>
+
       <FirstSoundPage/>
       <StatusBar style="auto" />
     </View>
