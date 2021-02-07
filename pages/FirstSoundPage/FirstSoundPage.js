@@ -98,13 +98,23 @@ const DATAFIFTHROW = [
 
 const renderItem = ({ item }) => (
     console.log('item', item),
+        <>
         <View
             style={styles.item}
             // style={{ height: 100, width: 100, alignItems:"center", backgroundColor: 'white' }}
         >
             <Image source={item.image} style={{ height: 50, width: 50 }}/>
-            <Text />
+            <Slider
+                thumbTintColor="black"
+                style={{transform: [{ scaleX: 0.6 }, { scaleY: 0.6 }], width: 70, height: 80}}
+                minimumValue={0}
+                value="3"
+                maximumValue={10}
+                minimumTrackTintColor="blue"
+                maximumTrackTintColor="green"
+            />
         </View>
+        </>
 );
 
 const App = () => {
@@ -155,15 +165,7 @@ const App = () => {
                     style={{ flex: 1 }}
                 />
             </View>
-            <View>
-                <Slider
-                    style={{width: 200, height: 40}}
-                    minimumValue={0}
-                    maximumValue={1}
-                    minimumTrackTintColor="#FFFFFF"
-                    maximumTrackTintColor="#000000"
-                />
-            </View>
+
         </SafeAreaView>
 
     );
